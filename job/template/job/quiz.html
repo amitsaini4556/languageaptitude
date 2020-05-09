@@ -1,0 +1,530 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Side Menu</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<style media="screen">
+  @import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
+body {
+	background: #048;
+	background: -webkit-linear-gradient(left top, #027, #48a);
+	background: -moz-linear-gradient(bottom right, #027, #48a);
+	background: linear-gradient(to bottom right, #027, #48a);
+	color: #fff;
+	font-family: 'Raleway', Helvetica, Arial, sans-serif;
+	font-size: 18px;
+	font-weight: 300;
+	line-height: 140%;
+	margin: 0;
+	min-height: 100vh;
+	padding: 0;
+	width: 100%;
+}
+h1.page_title{color:#fff;}
+h4.what_to_do{color:#fff;}
+h2.menu_title{color:#fff;}
+.page_title,
+.what_to_do {
+	font-weight: 300;
+	line-height: 120%;
+	text-align: center;
+	text-shadow: 0 1px 5px rgba(0,0,0,.8);
+	text-transform: uppercase;
+
+}
+
+/* PEN STYLES ========== */
+a,
+.side_menu {
+	-webkit-transition: all 300ms ease-in-out;
+	transition: all 300ms ease-in-out;
+}
+
+/* MENU CONTAINER ----- */
+	.side_menu {
+		background: rgba(0,20,60,.9);
+		height: 100vh;
+		left: -250px;
+		position: absolute;
+		top: 0;
+		width: 250px;
+	}
+	.side_menu .container {
+		padding: 0 1em;
+	}
+
+/* HAMBURGER STYLES ----- */
+	.burger_box {
+		display: block;
+		float: right;
+		margin-right: -45px;
+	}
+	.burger_box a.menu-icon {
+		display: inline-block;
+		float: none;
+		height: 43px;
+		padding: 10px;
+		opacity: .5;
+		width: 45px;
+		z-index: 100;
+	}
+	.burger_box a.menu-icon:hover,
+	.burger_box a.menu-icon.opened {
+		opacity: 1;
+	}
+	.burger_box a.menu-icon.opened {
+		background: rgba(0,20,60,.9);
+	}
+	.burger_box .menu-icon_box {
+		display: inline-block;
+		height: 25px;
+		position: relative;
+		text-align: left;
+		width: 25px;
+	}
+	.burger_box .menu-icon_line {
+		background: #fff;
+		border-radius: 2px;
+		display: inline-block;
+		height: 3px;
+		position: absolute;
+		width: 100%;
+	}
+	.burger_box .menu-icon_line--1 {
+		top: 2px;
+	}
+	.burger_box .menu-icon_line--2 {
+		top: 10px;
+	}
+	.burger_box .menu-icon_line--3 {
+		top: 18px;
+	}
+	.burger_box .menu-icon_line--1 {
+		transition: top 200ms 250ms, transform 200ms;
+		-webkit-transition: top 200ms 250ms, -webkit-transform 200ms;
+	}
+	.burger_box .menu-icon_line--2 {
+		transition: opacity 0ms 300ms;
+		-webkit-transition: opacity 0ms 300ms;
+	}
+	.burger_box .menu-icon_line--3 {
+		transition: top 100ms 300ms, transform 200ms;
+		-webkit-transition: top 100ms 300ms, -webkit-transform 200ms;
+	}
+	.burger_box .menu-icon.opened .menu-icon_box {
+		transform: scale3d(0.9, 0.9, 0.9);
+		-webkit-transform: scale3d(0.9, 0.9, 0.9);
+	}
+	.burger_box .menu-icon.opened .menu-icon_line {
+		top: 10px;
+	}
+	.burger_box .menu-icon.opened .menu-icon_line--1 {
+		transform: rotate3d(0, 0, 1, 45deg);
+		-webkit-transform: rotate3d(0, 0, 1, 45deg);
+		transition: top 100ms, transform 200ms 250ms;
+		-webkit-transition: top 100ms, -webkit-transform 200ms 250ms;
+	}
+	.burger_box .menu-icon.opened .menu-icon_line--2 {
+		opacity: 0;
+		transition: opacity 200ms;
+		-webkit-transition: opacity 200ms;
+	}
+	.burger_box .menu-icon.opened .menu-icon_line--3 {
+		transform: rotate3d(0, 0, 1, -45deg);
+		-webkit-transform: rotate3d(0, 0, 1, -45deg);
+		transition: top 200ms, transform 200ms 250ms;
+		-webkit-transition: top 200ms, -webkit-transform 200ms 250ms;
+	}
+
+/* STAGGER LIST ----- */
+	.list_load {
+		display: none;
+		list-style: none;
+		padding: 0;
+	}
+	.list_item {
+		margin-left: -20px;
+		opacity: 0;
+		-webkit-transition: all 200ms ease-in-out;
+		transition: all 200ms ease-in-out;
+	}
+	.list_item a {
+		color: #fff;
+		display: block;
+		padding-left: 5px;
+		text-decoration: none;
+    cursor:pointer;
+	}
+  .list_item input {
+		color: #fff;
+		display: block;
+		padding: 5px 10px;
+		text-decoration: none;
+	}
+	.list_item a:hover {
+		background: rgba(255,255,255,.2);
+	}
+  .ques{
+    width:100%;
+    max-width:100%;
+    padding:10%;
+    padding-top:2vw;
+
+
+  }
+
+
+
+  /* The container */
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border:none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    display:block;
+    padding:0vw;
+    color: #fff;
+		display: block;
+		padding-left: 5px;
+		text-decoration: none;
+    cursor:pointer;
+    width:181px;
+    text-align:left;
+}
+.code{
+  padding-right:10vw;
+  color:#EA692A;
+}
+
+
+
+.header {
+  padding: 10px 16px;
+  background: #048;
+	background: -webkit-linear-gradient(left top, #027, #48a);
+	background: -moz-linear-gradient(bottom right, #027, #48a);
+	background: linear-gradient(to bottom right, #027, #48a);
+	color: #fff;
+}
+
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
+
+
+
+</style>
+<body >
+
+
+  <div class="header" id="myHeader">
+    <h1 class="page_title" style="text-align:center">C - Quiz</h1>
+<h4 class="what_to_do" style="text-align:center">Test your concepts here.</h4>
+  </div>
+
+<div class="content">
+<div class="ques">
+
+{% if submission %}
+{{ quiz }}<br>
+
+
+
+<p>Result:: {{ result }} </p>
+{% for i in submission %}
+{{i.question }}
+<div class="code">
+      <p>{{ i.code | linebreaks }}</p>
+</div>
+Answer::
+{{ i.answer | linebreaks }}
+{{ i.solution | linebreaks }}
+<hr>
+{% endfor %}
+<p style="text-align:center;">❤ THANK YOU ❤</p>
+{% endif %}
+
+
+{% if info %}
+{{ info }}
+{% else %}
+<form class="" action="" method="post">
+  {% csrf_token %}
+  <input type="text" name="count" value="{{ incr }}" hidden>
+  <input type="text" name="quiz" value="{{ quiz }}" hidden>
+  <input type="text" name="result" value="{{ result }}" hidden>
+  {% for d in data_list %}
+
+  <h2>{{ d.question | linebreaks }}</h2>
+  <div class="code">
+
+  <p >{{ d.code | linebreaks }}</p>
+  </div>
+  <label class="container">{{ d.op1 | linebreaks }}
+  <input type="radio" name="radio" value="{{ d.op1 }}">
+    <span class="checkmark"></span>
+  </label>
+  <label class="container">{{ d.op2 | linebreaks }}
+    <input type="radio" name="radio" value="{{ d.op2 }}">
+    <span class="checkmark"></span>
+  </label>
+  <label class="container">{{ d.op3 | linebreaks }}
+    <input type="radio" name="radio" value="{{ d.op3 }}">
+    <span class="checkmark"></span>
+  </label>
+  <label class="container">{{ d.op4 | linebreaks }}
+    <input type="radio" name="radio" value="{{ d.op4 }}">
+    <span class="checkmark"></span>
+  </label>
+
+
+  {% endfor %}
+  {% if close %}
+
+  {% else %}
+   <input type="submit" id="mySubmit" style="color:black;display:block;border-radius:15px;">
+   {% endif %}
+  </form>
+  {% endif %}
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="side_menu" style="position:fixed">
+	<div class="burger_box">
+		<div class="menu-icon-container">
+			<a href="#" class="menu-icon js-menu_toggle closed">
+				<span class="menu-icon_box">
+					<span class="menu-icon_line menu-icon_line--1"></span>
+					<span class="menu-icon_line menu-icon_line--2"></span>
+					<span class="menu-icon_line menu-icon_line--3"></span>
+				</span>
+			</a>
+		</div>
+	</div>
+	<div class="px-5">
+		<h2 class="menu_title">Menu Title</h2>
+		<ul class="list_load">
+      <form class="list_item" action="{% url 'quiz' %}" method="post">
+        {% csrf_token %}
+			     <input type="text" name="quiz" value="Quiz1" hidden>
+           <input   type="number" name="count" value="0" hidden id="myNumber" >
+            <input   type="number" name="result" value="0" hidden id="myNumber1">
+          <li class="list_item"><a><button  type="submit" name="Quiz1" onclick="amit()">Quiz 1</button></a></li>
+      </form>
+      <form class="list_item" action="{% url 'quiz' %}" method="post">
+        {% csrf_token %}
+			     <input   type="text" name="quiz" value="Quiz2" hidden>
+           <input type="number" name="count" value="0" hidden id="myNumber">
+           <input type="number" name="result" value="0" hidden id="myNumber1">
+          <li class="list_item"><a><button  type="submit" name="Quiz2" onclick="amit()">Quiz 2</button></a></li>
+      </form>
+      <form class="list_item" action="{% url 'quiz' %}" method="post">
+        {% csrf_token %}
+			     <input type="text" name="quiz" value="Quiz3" hidden>
+           <input type="text" name="count" value="{{ incr }}" hidden>
+           <input type="text" name="result" value="{{ result }}" hidden>
+          <li class="list_item"><a><button type="submit" name="Quiz3">Quiz 3</button></a></li>
+      </form>
+      <form class="list_item" action="{% url 'quiz' %}" method="post">
+        {% csrf_token %}
+			     <input type="text" name="quiz" value="Quiz4" hidden>
+           <input type="text" name="count" value="{{ incr }}" hidden>
+           <input type="text" name="result" value="{{ result }}" hidden>
+          <li class="list_item"><a><button type="submit" name="Quiz4">Quiz 4</button></a></li>
+      </form>
+      <form class="list_item" action="{% url 'quiz' %}" method="post">
+        {% csrf_token %}
+			     <input type="text" name="quiz" value="Quiz5" hidden>
+           <input type="text" name="count" value="{{ incr }}" hidden>
+           <input type="text" name="result" value="{{ result }}" hidden>
+          <li class="list_item"><a><button type="submit" name="Quiz5">Quiz 5</button></a></li>
+      </form>
+      <form class="list_item" action="{% url 'quiz' %}" method="post">
+        {% csrf_token %}
+			     <input type="text" name="quiz" value="Quiz6" hidden>
+           <input type="text" name="count" value="{{ incr }}" hidden>
+           <input type="text" name="result" value="{{ result }}" hidden>
+          <li class="list_item"><a><button type="submit" name="Quiz6">Quiz 6</button></a></li>
+      </form>
+      <form class="list_item" action="{% url 'quiz' %}" method="post">
+        {% csrf_token %}
+			     <input type="text" name="quiz" value="Quiz7" hidden>
+              <input type="text" name="count" value="{{ incr }}" hidden>
+              <input type="text" name="result" value="{{ result }}" hidden>
+          <li class="list_item"><a><button type="submit" name="Quiz7">Quiz 7</button></a></li>
+      </form>
+      <form class="list_item" action="{% url 'quiz' %}" method="post">
+        {% csrf_token %}
+			     <input type="text" name="quiz" value="Quiz8" hidden>
+              <input type="text" name="count" value="{{ incr }}" hidden>
+              <input type="text" name="result" value="{{ result }}" hidden>
+          <li class="list_item"><a><button type="submit" name="Quiz8">Quiz 8</button></a></li>
+      </form>
+      <form class="list_item" action="{% url 'quiz' %}" method="post">
+        {% csrf_token %}
+           <input type="text" name="quiz" value="Quiz9" hidden>
+              <input type="text" name="count" value="{{ incr }}" hidden>
+              <input type="text" name="result" value="{{ result }}" hidden>
+          <li class="list_item"><a><button type="submit" name="Quiz9">Quiz 9</button></a></li>
+      </form>
+      <form class="list_item" action="{% url 'quiz' %}" method="post">
+        {% csrf_token %}
+           <input type="text" name="quiz" value="Quiz10" hidden>
+              <input type="text" name="count" value="{{ incr }}" hidden>
+              <input type="text" name="result" value="{{ result }}" hidden>
+          <li class="list_item"><a><button type="submit" name="Quiz10">Quiz 10</button></a></li>
+      </form>
+		</ul>
+
+      <li class="list_item"><a href="{% url 'home' %}"> HOME </a></li>
+	</div>
+</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+    // Requires jQuery
+
+$(document).on('click','.js-menu_toggle.closed',function(e){
+	e.preventDefault(); $('.list_load, .list_item').stop();
+	$(this).removeClass('closed').addClass('opened');
+
+	$('.side_menu').css({ 'left':'0px' });
+
+	var count = $('.list_item').length;
+	$('.list_load').slideDown( (count*.6)*50 );
+	$('.list_item').each(function(i){
+		var thisLI = $(this);
+		timeOut = 50*i;
+		setTimeout(function(){
+			thisLI.css({
+				'opacity':'1',
+				'margin-left':'0'
+			});
+		},50*i);
+	});
+});
+
+$(document).on('click','.js-menu_toggle.opened',function(e){
+	e.preventDefault(); $('.list_load, .list_item').stop();
+	$(this).removeClass('opened').addClass('closed');
+
+	$('.side_menu').css({ 'left':'-250px' });
+
+	var count = $('.list_item').length;
+	$('.list_item').css({
+		'opacity':'0',
+		'margin-left':'-20px'
+	});
+	$('.list_load').slideUp(300);
+});
+});
+
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementById("myHeader");
+var sticky = header.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+  </script>
+
+</body>
+</html>

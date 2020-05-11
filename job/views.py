@@ -34,5 +34,5 @@ def quiz(request):
         data_list=database.objects.filter(quizname=request.POST['quiz']).filter(question__contains=str(intfirst))
         return render(request,'job/quiz.html',{'data_list':data_list,'incr':intfirst,'quiz':request.POST['quiz'],'result':res})
     else:
-        info="basic rules for a quiz"
+        info="Basic rules for a quiz"+"\n"+"=> There will be 10 Question."+"\n"+"=> 4 Marks for each correct answer."+"\n"+"=> 2 marks will be deducted for each wrong answer"+"\n"+"=> Best Of Luck!!!"             
         return render(request,'job/quiz.html',{'info':info,'incr':0,'result':0})

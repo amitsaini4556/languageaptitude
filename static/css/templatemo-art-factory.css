@@ -745,6 +745,7 @@ TRY IT ... with or without CENTER CENTER
   transform: translateY(-60%);
   text-align: left;
   width: 100%;
+  color: #F86D41;
 }
 
 .welcome-area .header-text .left-text {
@@ -757,13 +758,13 @@ TRY IT ... with or without CENTER CENTER
   line-height: 80px;
   letter-spacing: 1.4px;
   margin-bottom: 30px;
-  color: #fff;
+  color: #F86D41;
 }
 
 .welcome-area .header-text p {
   font-weight: 300;
   font-size: 17px;
-  color: #fff;
+  color:black;
   line-height: 30px;
   letter-spacing: 0.25px;
   margin-bottom: 40px;
@@ -778,14 +779,14 @@ TRY IT ... with or without CENTER CENTER
   .welcome-area .header-text h1 {
     font-size: 36px;
     line-height: 50px;
-    color: #fff;
+    color: #f89406;
     margin-bottom: 15px;
   }
   .welcome-area .header-text h1 span {
-    color: #fff;
+    color: ##f89406;
   }
   .welcome-area .header-text p {
-    color: #fff;
+    color: #212529;
     margin-bottom: 30px;
   }
 }
@@ -799,6 +800,7 @@ TRY IT ... with or without CENTER CENTER
     font-size: 36px;
     line-height: 50px;
     margin-bottom: 15px;
+    color:#f89406;
   }
   .welcome-area .header-text p {
     margin-bottom: 30px;
@@ -824,11 +826,11 @@ TRY IT ... with or without CENTER CENTER
     margin-bottom: 20px !important;
   }
   .welcome-area .header-text h1 span {
-    color: #fff;
+    color: #f89406;
   }
   .welcome-area .header-text p {
     text-align: center;
-    color: #fff;
+    color: #v;
     font-size: 14px;
     line-height: 22px;
     margin-bottom: 40px;

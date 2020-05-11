@@ -779,14 +779,14 @@ TRY IT ... with or without CENTER CENTER
   .welcome-area .header-text h1 {
     font-size: 36px;
     line-height: 50px;
-    color: #fff;
+    color: ##f89406;
     margin-bottom: 15px;
   }
   .welcome-area .header-text h1 span {
-    color: #fff;
+    color: ##f89406;
   }
   .welcome-area .header-text p {
-    color: #fff;
+    color: #212529;
     margin-bottom: 30px;
   }
 }
@@ -800,6 +800,7 @@ TRY IT ... with or without CENTER CENTER
     font-size: 36px;
     line-height: 50px;
     margin-bottom: 15px;
+    color:#f89406;
   }
   .welcome-area .header-text p {
     margin-bottom: 30px;
@@ -825,11 +826,11 @@ TRY IT ... with or without CENTER CENTER
     margin-bottom: 20px !important;
   }
   .welcome-area .header-text h1 span {
-    color: #fff;
+    color: #f89406;
   }
   .welcome-area .header-text p {
     text-align: center;
-    color: #fff;
+    color: #212529;
     font-size: 14px;
     line-height: 22px;
     margin-bottom: 40px;

@@ -13,6 +13,7 @@
 </head>
 <style media="screen">
   @import url(https://fonts.googleapis.com/css?family=Raleway:300,700);
+
 body {
 	background: #048;
 	background: -webkit-linear-gradient(left top, #027, #48a);
@@ -293,7 +294,16 @@ button {
   padding-top: 102px;
 }
 
-
+pre.code
+{
+	background-color:#FFF1CD;
+	font-family:courier, serif;
+	font-size:15px;
+	font-style:normal;
+	margin:5px;
+	padding:0px;
+  color:black;
+}
 
 </style>
 <body >
@@ -315,11 +325,15 @@ button {
 <p>Result:: {{ result }} </p>
 {% for i in submission %}
 {{i.question }}
-<div class="code">
+<br>
+  <pre class="code">
       <p>{{ i.code | linebreaks }}</p>
-</div>
+  </pre>
+<br>
 Answer::
+<br>
 {{ i.answer | linebreaks }}
+<br>
 {{ i.solution | linebreaks }}
 <hr>
 {% endfor %}
@@ -338,10 +352,11 @@ Answer::
   {% for d in data_list %}
 
   <h2>{{ d.question | linebreaks }}</h2>
-  <div class="code">
-
+<br>
+  <pre class="code">
   <p >{{ d.code | linebreaks }}</p>
-  </div>
+  </pre>
+  <br>
   <label class="container">{{ d.op1 | linebreaks }}
   <input type="radio" name="radio" value="{{ d.op1 }}">
     <span class="checkmark"></span>
